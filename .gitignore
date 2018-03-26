@@ -1,0 +1,5 @@
+app/ai/dataset/*
+app/ai/google-images-download/*
+app/ai/trained_model/*
+app/ai/sample_test/*
+app/ai/venv

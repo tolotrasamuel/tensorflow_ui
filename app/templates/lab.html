@@ -1,0 +1,78 @@
+{% extends "base.html"%}
+{% block title %} MODEL LAB{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>Model Laboratory</h1>
+        <p class="lead"> View, Monitor and Delete Models</p>
+    </div>
+    <div></div>
+    <h2>Processing model</h2>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Label Count</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for model in models_training %}
+            <tr>
+                <td>{{model.title}}</td>
+                <td><span class="label label-warning">{{model.status}}</span></td>
+                <td>{{model.label_count}}</td>
+                <td>
+                    <button type="button" onclick="removeModel({{model.id}})">Remove</button>
+                </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        {% if not models_training %}
+        <div class="alert alert-info">
+            <strong> Info!: You have not model that are currently training</strong>
+        </div>
+        {% endif %}
+    </div>
+    <h2>Completed training</h2>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Label Count</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for model in models_trained %}
+            <tr>
+                <td>{{model.title}}</td>
+                <td><span class="label label-success">{{model.status}}</span></td>
+                <td>{{model.label_count}}</td>
+                <td>
+                    <button type="button" onclick="removeModel({{model.id}})">Remove</button>
+                </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        {% if not models_trained %}
+        <div class="alert alert-warning">
+            <strong> Warning!: You have no model yet. Consider re-training</strong>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="{{script}}">
+
+</script>
+
+{% endblock %}

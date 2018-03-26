@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}RETRAIN{% endblock %}
+{% block body %}
+
+<div ng-app="myApp" ng-controller="myCtrl" class="jumbotron">
+    <h1>Retrain your AI</h1>
+</div>
+
+<p class="lead">Create a custom model, Choose labels, upload image examples, Train and Evaluate! </p>
+<form enctype="multipart/form-data" method="post" id="form">
+
+    <div>
+        <h2>Step 1</h2>
+        <h3>Give a title</h3>
+        <label>Title: </label><input type="text" name="title">
+    </div>
+    <div>
+        <h2>Step 2</h2>
+        <h3>Add label</h3>
+        <label>Label name: </label><input type="text" id="label_input" name="title"> <input name="" value="Add"
+                                                                                            onclick="addLabel(this)"
+                                                                                            type="button">
+        <table class="table" id="label_table">
+            <thead>
+            <tr>
+                <th>Label</th>
+                <th>Dataset Example (zip file contain jpeg, png, jpg only)</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+    </div>
+    <div>
+        <h2>Step 3</h2>
+        <h3>Start Learning!</h3>
+        <input type="submit" value="Start learning"/>
+        <div id="message"></div>
+    </div>
+</form>
+
+<script src={{script}}>
+
+</script>
+{% endblock %}

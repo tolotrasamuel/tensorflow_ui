@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<div class="jumbotron">
+    <h1>WELCOME TO AI VISION DASHBOARD</h1>
+    <p class="lead">Upload a picture, Select the model and evaluate! </p>
+    <form enctype="multipart/form-data" method="post" id="form" >
+
+        {% for model in models %}
+        <li>
+            <label>{{model.title}} :</label>
+            {% if model.checked %}
+            <input name='model' type="radio" value="{{model.folder_name}}" checked>
+            {% else %}
+            <input name='model' type="radio" value="{{model.folder_name}}">
+            {% endif %}
+            {% else %}
+        <li><em> Sommething wrong. No model found, even basic pre trained model</em>
+            {% endfor %}
+            <div>
+                <input type="file" id="picture" name="file"/>
+                <input type="submit" value="Evaluate">
+            </div>
+    </form>
+
+    <div id="message">
+
+    </div>
+
+</div>
+
+<script src="{{script}}"></script>
+{% endblock %}
